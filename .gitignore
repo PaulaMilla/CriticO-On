@@ -1,0 +1,2 @@
+backend-server/node_modules
+# Ignore the backend server's node_modules directory
