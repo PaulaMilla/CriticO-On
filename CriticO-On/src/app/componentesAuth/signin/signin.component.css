@@ -1,0 +1,21 @@
+body {
+    background-color: #f8f9fa; 
+  }
+  
+  .container {
+    max-width: 500px;
+  }
+  
+  .form-label {
+    font-weight: bold;
+  }
+  
+  .btn-primary {
+    background-color: #241344 !important; 
+    border-color: #241344 !important;
+  }
+  
+  .btn-primary:hover {
+    background-color: #1b0c33 !important; 
+    border-color: #1b0c33 !important;
+  }
