@@ -1,0 +1,18 @@
+<h2 style="margin-left: 0.9em; margin-top: 0.9em;"> Populares </h2>
+
+<div class="d-flex overflow-auto gap-3 p-3" style="white-space: nowrap;">
+  <div class="card" *ngFor="let slide of reviewSlides" style="width: 15rem; flex: 0 0 auto;">
+    <img [src]="slide.url_foto" class="card-img-top mx-auto d-block" style="height: 250px; width:auto; object-fit: cover;">
+    <div class="card-body">
+      <h5 class="card-title" style="white-space: normal; text-align: center">{{ slide.review.comentario }}</h5>
+      <br>
+      <p class="card-text">Rating ⭐: {{ slide.review.rating }}</p>
+      <p class="card-text">Likes ❤️: {{ slide.review.cantidad_likes }}</p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
