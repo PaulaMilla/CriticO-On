@@ -14,7 +14,9 @@ app.use('/api/auth', authRoutes)
 
 const mainRoutes = require('./routes/mainRoutes');
 const contentRoutes = require('./routes/contentRoutes');
+const reviewRoutes = require('./routes/reviewRoutes');
 
+app.use('/api/review', reviewRoutes);
 app.use('/api', mainRoutes);
 app.use('/api/content', contentRoutes);
 

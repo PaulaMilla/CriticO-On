@@ -5,7 +5,7 @@ const contentController = require('../controllers/contentController');
 router.get('/serie_pelicula', contentController.getSeriesPeliculas);
 router.get('/review', contentController.getReviews);
 router.get('/populares', contentController.getPopulares);
+router.get('/:id', contentController.getContenidoById);
 router.get('/recientes', contentController.getRecientes);
-
 
 module.exports = router;
