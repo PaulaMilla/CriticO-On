@@ -23,7 +23,7 @@ export class HeaderComponent {
       this.user = this.authService.getLoggedInUser();
     });
   }
-  
+
   goToLogin() {
     this.router.navigate(['/login']);
   }
@@ -35,5 +35,10 @@ export class HeaderComponent {
   logout() {
     this.authService.logout();
     this.router.navigate(['/login']);
+  }
+
+  goToHome() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    this.router.navigate(['/home']); // o '/' dependiendo de cómo tengas definida tu ruta de inicio
   }
 }
