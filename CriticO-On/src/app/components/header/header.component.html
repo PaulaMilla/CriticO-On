@@ -22,16 +22,18 @@
         </span>
       </div>
       <div class="btn-group">
-        <a href="#" id="imageDropdown" class="dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" >
+        <a href="#" id="imageDropdown" class="dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
           <img src="assets/anon.png" alt="Avatar" width="60" height="60" style="border-radius: 50%;">
         </a>
         <ul class="dropdown-menu dropdown-menu-end" role="menu" aria-labelledby="imageDropdown">
-          <li>
-            <button class="dropdown-item" type="button" (click)="goToLogin()">Iniciar sesión</button>
-          </li>
-          <li>
-            <button class="dropdown-item" type="button" (click)="goToSignIn()">Registrarse</button>
-          </li>
+          <ng-container *ngIf="isAuthenticated; else loginRegisterOptions">
+            <li><button class="dropdown-item" type="button" (click)="logout()">Cerrar sesión</button></li>
+          </ng-container>
+      
+          <ng-template #loginRegisterOptions>
+            <li><button class="dropdown-item" type="button" (click)="goToLogin()">Iniciar sesión</button></li>
+            <li><button class="dropdown-item" type="button" (click)="goToSignIn()">Registrarse</button></li>
+          </ng-template>
         </ul>
       </div>
     </div>
