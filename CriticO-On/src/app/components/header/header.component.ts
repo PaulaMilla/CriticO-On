@@ -39,6 +39,6 @@ export class HeaderComponent {
 
   goToHome() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    this.router.navigate(['/home']); // o '/' dependiendo de cómo tengas definida tu ruta de inicio
+    this.router.navigate(['/home']); 
   }
 }
