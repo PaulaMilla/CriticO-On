@@ -1,0 +1,47 @@
+<app-contentdetail></app-contentdetail>
+
+<div class="container my-5 p-4 rounded shadow-sm" style="background-color: #ffffff; max-width: 600px;">
+  <h2 class="text-center mb-4" style="color: #241344; font-weight: bold;">Crear reseña</h2>
+
+  <!-- Calificación numérica -->
+  <div class="mb-4">
+    <label for="ratingInput" class="form-label fw-semibold" style="color: #241344;">Calificación (0 - 10):</label>
+    <input type="number"
+            [(ngModel)]="rating"
+            (input)="onRatingInput($event)"
+            step="0.1"
+            min="0" max="10"
+            class="form-control border-2 border-warning-subtle"
+            placeholder="Ej: 8.5"
+            style="width: 22rem;" />
+  </div>
+
+  <!-- Estrellas -->
+  <div class="mb-4">
+    <label class="form-label fw-semibold d-block" style="color: #241344;">Estrellas:</label>
+    <div class="d-flex justify-content-center gap-1 mb-1 fs-4">
+      <i *ngFor="let star of firstRow"
+         class="fa"
+         [ngClass]="star ? 'fa-star star-color' : 'fa-star-o star-muted'"></i>
+    </div>
+    <div class="d-flex justify-content-center gap-1 fs-4">
+      <i *ngFor="let star of secondRow"
+         class="fa"
+         [ngClass]="star ? 'fa-star star-color' : 'fa-star-o star-muted'"></i>
+    </div>
+  </div>
+
+  <!-- Comentario -->
+  <div class="form-floating mb-3">
+    <textarea id="comentario"
+              class="form-control"
+              placeholder="Deja tu comentario aquí"
+              style="height: 120px;"></textarea>
+    <label for="comentario" style="color: #241344;">Comentario</label>
+  </div>
+
+  <!-- Botón enviar -->
+  <div class="text-center">
+    <button class="btn" style="background-color: #FA772E; color: #fff;">Enviar Reseña</button>
+  </div>
+</div>
