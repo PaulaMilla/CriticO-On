@@ -14,7 +14,9 @@ export interface Contenido {
 @Injectable({
   providedIn: 'root'
 })
+
 export class ContentService {
+
   private apiUrl = 'http://localhost:3000/api/content';
 
   constructor(private http: HttpClient) {}
@@ -22,4 +24,9 @@ export class ContentService {
   getContenido(id: number): Observable<Contenido> {
     return this.http.get<Contenido>(`${this.apiUrl}/${id}`);
   }
+
+  getRecientes(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/recientes`);
+  }
+
 }

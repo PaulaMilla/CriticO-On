@@ -1,37 +1,55 @@
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #241344;">
   <div class="container-fluid d-flex justify-content-between align-items-center">
 
-    <!-- IZQUIERDA: OFFCANVAS BUTTON (Móvil y Desktop) -->
+    <!-- IZQUIERDA: OFFCANVAS BUTTON -->
     <div class="d-flex align-items-center">
       <app-offcanvas></app-offcanvas>
     </div>
 
-    <!-- CENTRO: LOGO (siempre centrado) -->
+    <!-- CENTRO: LOGO -->
     <div class="d-flex justify-content-center flex-grow-1">
-      <a class="navbar-brand mx-auto" >
+      <a class="navbar-brand mx-auto" (click)="goToHome()" style="cursor: pointer;">
         <img src="assets/logo.png" alt="Logo" width="150" height="150" class="d-inline-block align-text-top">
       </a>
     </div>
 
     <!-- DERECHA: LUPA + AVATAR -->
     <div class="d-flex align-items-center">
-      <div class="search-container position-relative">
+      <div class="search-container position-relative me-3">
         <input type="text" class="form-control ps-5 search-hover" placeholder="Search here..." style="padding-left: 2.5rem;">
         <span class="position-absolute top-50 start-0 translate-middle-y ps-0 search-hover-icon">
           <i class="fa fa-search" style="color: #FA772E;"></i>
         </span>
       </div>
+
+      <!-- Avatar y Dropdown -->
       <div class="btn-group">
-        <a href="#" id="imageDropdown" class="dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" >
-          <img src="assets/anon.png" alt="Avatar" width="60" height="60" style="border-radius: 50%;">
+        <a href="#" id="imageDropdown" class="dropdown-toggle d-flex align-items-center text-decoration-none" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+          <!-- Nombre/Alias (visible en pantallas medianas hacia arriba) -->
+          <span *ngIf="isAuthenticated" class="ms-2 d-none d-md-inline text-white">
+            {{ user.alias || user.nombre }}
+          </span>
+          <!-- Avatar -->
+          <img 
+            [src]="isAuthenticated ? 'assets/avatar.png'  : 'assets/anon.png'" 
+            alt="Avatar" 
+            width="60" 
+            height="60" 
+            style="border-radius: 50%; object-fit: cover;"
+          >
+
         </a>
+
+        <!-- Menú dropdown -->
         <ul class="dropdown-menu dropdown-menu-end" role="menu" aria-labelledby="imageDropdown">
-          <li>
-            <button class="dropdown-item" type="button" (click)="goToLogin()">Iniciar sesión</button>
-          </li>
-          <li>
-            <button class="dropdown-item" type="button" (click)="goToSignIn()">Registrarse</button>
-          </li>
+          <ng-container *ngIf="isAuthenticated; else loginRegisterOptions">
+            <li><button class="dropdown-item" type="button" (click)="logout()">Cerrar sesión</button></li>
+          </ng-container>
+
+          <ng-template #loginRegisterOptions>
+            <li><button class="dropdown-item" type="button" (click)="goToLogin()">Iniciar sesión</button></li>
+            <li><button class="dropdown-item" type="button" (click)="goToSignIn()">Registrarse</button></li>
+          </ng-template>
         </ul>
       </div>
     </div>

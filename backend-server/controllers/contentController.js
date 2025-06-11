@@ -88,3 +88,21 @@ exports.getPopulares = (req, res) => {
         res.json(populares);
     });
 };
+
+exports.getRecientes = (req, res) => {
+    const sql = `
+        SELECT id_sp, nombre, url_foto, fecha
+        FROM serie_pelicula
+        ORDER BY fecha DESC
+        LIMIT 3
+    `;
+
+    db.query(sql, (err, results) => {
+        if (err) {
+            console.error('Error al obtener recientes:', err);
+            return res.status(500).json({ error: 'Error en la consulta' });
+        }
+        res.json(results);
+    });
+};
+

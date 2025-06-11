@@ -48,3 +48,10 @@
   width: 500px;
   padding-left: 50px;
 }
+
+.dropdown-item:hover,
+.dropdown-item:focus,
+.dropdown-item:active {
+  background-color: #241344 !important;
+  color: white !important;
+}
