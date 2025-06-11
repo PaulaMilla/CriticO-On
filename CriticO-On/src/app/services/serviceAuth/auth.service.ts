@@ -38,7 +38,7 @@ export class AuthServiceService {
         if (res && res.token) {
           localStorage.setItem('auth_token', res.token);
           localStorage.setItem('user', JSON.stringify(res.user));
-          this.authStatus.next(true); // Actualizar estado
+          this.authStatus.next(true); 
         }
       })
     );
