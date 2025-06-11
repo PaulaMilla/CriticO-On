@@ -23,7 +23,7 @@ export interface PopularItem {
   providedIn: 'root',
 })
 export class PopularesService {
-  private apiUrl = 'http://localhost:3000/populares'; // Proxy configurado
+  private apiUrl = 'http://localhost:3000/api/content/populares'; // Proxy configurado
 
   constructor(private http: HttpClient) {}
 
