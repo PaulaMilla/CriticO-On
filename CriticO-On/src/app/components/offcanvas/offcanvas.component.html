@@ -1,0 +1,28 @@
+<ng-template #content let-offcanvas>
+	<div class="offcanvas-header" style="background-color: #241344; color: white;">
+		<h4 class="offcanvas-title">CriticO-On!</h4>
+        <button type="button" class="btn-close btn-close-white" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
+	</div>
+	<div class="offcanvas-body" style="background-color: #241344; color: white;">
+		<ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Another link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li>
+        </ul>
+	</div>
+</ng-template>
+
+<button class="btn btn-lg btn-outline-light mb-2 me-2" 
+    (click)="openCustomPanelClass(content)" 
+    style="color: white; background-color: #241344; border-color: #241344; box-shadow: #241344;">
+    <i class="fas fa-bars"></i>
+</button>
