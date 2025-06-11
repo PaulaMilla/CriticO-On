@@ -35,7 +35,9 @@
     <textarea id="comentario"
               class="form-control"
               placeholder="Deja tu comentario aquí"
-              style="height: 120px;"></textarea>
+              style="height: 120px;"
+              maxlength="500"
+              (input)="onCommentInput($event)">{{comment}}</textarea>
     <label for="comentario" style="color: #241344;">Comentario</label>
   </div>
 
@@ -51,6 +53,16 @@
 
   <!-- Botón enviar -->
   <div class="text-center">
-    <button class="btn" style="background-color: #FA772E; color: #fff;">Enviar Reseña</button>
+    <button class="btn" style="background-color: #FA772E; color: #fff;" (click)="submitReview()">Enviar Reseña</button>
   </div>
+  
+  <!-- Modal de confirmación -->
+  <div class="modal-backdrop" *ngIf="showModal">
+    <div class="modal-content">
+      <h4>¡Crítica recibida!</h4>
+      <p>Gracias por compartir tu opinión.</p>
+      <button class="btn-close" (click)="closeModal()">Aceptar</button>
+    </div>
+  </div>
+
 </div>

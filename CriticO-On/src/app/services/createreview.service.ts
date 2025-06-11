@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class CreatereviewService {
-  private apiUrl= 'http://localhost:3000/api/review';
+  private apiUrl= 'http://localhost:3000/api/review/reviews';
   constructor(private http: HttpClient) { }
 
   createReview(review:{
@@ -14,6 +14,7 @@ export class CreatereviewService {
     spoiler: boolean;
     userId: number;
     contentId: number;
+    fecha: string;
   }){
     return this.http.post(this.apiUrl, review);
   }

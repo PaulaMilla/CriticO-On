@@ -1,10 +1,11 @@
 import { Component, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-offcanvas',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './offcanvas.component.html',
   styleUrl: './offcanvas.component.css'
 })

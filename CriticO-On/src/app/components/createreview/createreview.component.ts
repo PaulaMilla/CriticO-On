@@ -1,13 +1,13 @@
 import { Component, Input } from '@angular/core';
-import { ContentdetailComponent } from "../contentdetail/contentdetail.component";
 import { NgIf, NgFor, NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CreatereviewService } from '../../services/createreview.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-createreview',
   standalone: true,
-  imports: [ContentdetailComponent,NgFor, FormsModule, NgClass],
+  imports: [NgFor, FormsModule, NgClass, NgIf],
   templateUrl: './createreview.component.html',
   styleUrl: './createreview.component.css'
 })
@@ -17,9 +17,10 @@ export class CreatereviewComponent {
   @Input() userId!: number;
 
   rating: number = 10;
-  isSpoiler: boolean = false; // <- nueva propiedad
+  isSpoiler: boolean = false; 
 
-  // Devuelve arreglo de 10 elementos con valores true (llena) o false (vacía)
+  constructor(private reviewservice: CreatereviewService, private router: Router){}
+
   get starsArray(): boolean[] {
     const full = Math.floor(this.rating);
     return Array.from({ length: 10 }, (_, i) => i < full);
@@ -50,17 +51,47 @@ export class CreatereviewComponent {
     input.value = this.rating.toString();
   }
 
-  // (Opcional) Para cuando implementes el submit
-  submitReview(comment: string) {
-    const reviewPayload = {
-      contentId: this.contentId,
-      userId: this.userId,
-      rating: this.rating,
-      comment: comment,
-      containsSpoiler: this.isSpoiler
-    };
+  //comentario
+  comment = '';
+  onCommentInput(event: Event): void{
+    const input = event.target as HTMLInputElement;
+    this.comment = input.value;
+    if (this.comment.length > 500) {
+      this.comment = this.comment.slice(0, 500); 
+    }
+  }
 
-    console.log('Review enviada:', reviewPayload);
-    // Aquí deberías llamar al servicio para guardar la reseña en el backend
+  submitReview() {
+    const currentDate = new Date().toISOString();
+
+    console.log('Enviando reseña: ');
+    this.reviewservice.createReview({
+      comentario: this.comment,
+      rating: this.rating,
+      spoiler: this.isSpoiler,
+      userId: this.userId,
+      contentId: this.contentId,
+      fecha: currentDate
+    }).subscribe({
+      next: (response) => {
+        console.log('Reseña creada con éxito:', response);
+        this.showModal = true;
+      },
+      error: (error) => {
+        console.error('Error al crear la reseña:', error);
+      }
+    });
+  }
+
+  goToHome() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    this.router.navigate(['/home']); 
+  }
+
+  showModal = false;
+
+  closeModal() {
+    this.showModal = false;
+    this.goToHome();
   }
 }
