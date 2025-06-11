@@ -27,8 +27,14 @@ exports.getPopulares = (req, res) => {
         SELECT sp.id_sp, sp.url_foto,
                r.id_review, r.comentario, r.rating, r.cantidad_likes
         FROM serie_pelicula sp
-        JOIN review_sp rsp ON sp.id_sp = rsp.fk_sp
-        JOIN review r ON r.id_review = rsp.fk_review
+                 JOIN review_sp rsp ON sp.id_sp = rsp.fk_sp
+                 JOIN review r ON r.id_review = rsp.fk_review
+                 JOIN (
+            SELECT rsp.fk_sp, MAX(r.cantidad_likes) as max_likes
+            FROM review_sp rsp
+                     JOIN review r ON rsp.fk_review = r.id_review
+            GROUP BY rsp.fk_sp
+        ) as top_review ON rsp.fk_sp = top_review.fk_sp AND r.cantidad_likes = top_review.max_likes
     `;
 
     db.query(sql, (err, results) => {
