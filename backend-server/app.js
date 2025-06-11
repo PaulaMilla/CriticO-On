@@ -1,28 +1,28 @@
 //Requires
-var express = require('express');
-const mysql = require('mysql');
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser')
+const app = express();
 
-//Iniciar variables
-var app=express();
+app.use(express.json());
+app.use(cors());
+app.use(bodyParser.json());
 
-//configurar conexión
-const mc = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'criticoon-db'
-});
+//RUTAS
+const authRoutes = require('./routes/authRoutes')
+app.use('/api/auth', authRoutes)
+
+const mainRoutes = require('./routes/mainRoutes');
+const contentRoutes = require('./routes/contentRoutes');
+
+app.use('/api', mainRoutes);
+app.use('/api/content', contentRoutes);
 
 app.listen(3000, ()=>{
     console.log("Express server - puerto 3000 online");
 });
 
-//Conectar a la base de datos
-mc.connect((err) => {
-    if (err) {
-        console.error('Error conexión a la base de datos:', err);
-        return;
-    }
-    console.log('Conectado a la base de datos');
-});
+
+
+
 
