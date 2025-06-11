@@ -9,12 +9,4 @@ const mc = mysql.createConnection({
 });
 
 
-connection.connect((err) => {
-    if (err) {
-        console.error('Error conexión a la base de datos:', err);
-        return;
-    }
-    console.log('Conectado a la base de datos');
-});
-
 module.exports = mc;
