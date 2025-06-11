@@ -26,8 +26,12 @@
           <img src="assets/anon.png" alt="Avatar" width="60" height="60" style="border-radius: 50%;">
         </a>
         <ul class="dropdown-menu dropdown-menu-end" role="menu" aria-labelledby="imageDropdown">
-          <li><button class="dropdown-item" type="button">Iniciar sesión</button></li>
-          <li><button class="dropdown-item" type="button">Registrarse</button></li>
+          <li>
+            <button class="dropdown-item" type="button" (click)="goToLogin()">Iniciar sesión</button>
+          </li>
+          <li>
+            <button class="dropdown-item" type="button" (click)="goToSignIn()">Registrarse</button>
+          </li>
         </ul>
       </div>
     </div>
