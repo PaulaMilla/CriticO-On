@@ -11,6 +11,24 @@ exports.getSeriesPeliculas = (req, res) => {
     });
 };
 
+exports.getContenidoById = (req, res) => {
+  const id = req.params.id;
+
+  const query = `SELECT * FROM serie_pelicula WHERE id_sp = ?`;
+  db.query(query, [id], (err, results) => {
+    if (err) {
+      console.error('Error al obtener contenido:', err);
+      return res.status(500).json({ error: 'Error del servidor' });
+    }
+
+    if (results.length === 0) {
+      return res.status(404).json({ message: 'Contenido no encontrado' });
+    }
+
+    res.json(results[0]);
+  });
+};
+
 exports.getReviews = (req, res) => {
     db.query('SELECT * FROM review', (error, results) => {
         if (error) throw error;

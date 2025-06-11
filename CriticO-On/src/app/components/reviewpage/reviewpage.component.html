@@ -1,0 +1,18 @@
+<!-- Título de la página -->
+<div class="text-center mt-5 mb-4">
+  <h1 class="fw-bold" style="color: #241344;">Momento de criticar!</h1>
+  <p class="text-muted" style="font-size: 1.1rem;">Mira los detalles y comparte tu opinión</p>
+</div>
+
+<!-- Contenedor principal en dos columnas -->
+<div class="d-flex justify-content-center gap-4 flex-wrap px-3">
+  <!-- Detalle del contenido -->
+  <div style="flex: 1 1 40rem; max-width: 800px;">
+    <app-contentdetail [contentId]="contentId"></app-contentdetail>
+  </div>
+
+  <!-- Crear reseña -->
+  <div style="flex: 1 1 40rem; max-width: 600px;">
+    <app-createreview [contentId]="contentId" [userId]="1"></app-createreview>
+  </div>
+</div>

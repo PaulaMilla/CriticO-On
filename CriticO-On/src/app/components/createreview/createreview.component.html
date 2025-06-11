@@ -1,6 +1,5 @@
-<app-contentdetail></app-contentdetail>
 
-<div class="container my-5 p-4 rounded shadow-sm" style="background-color: #ffffff; max-width: 600px;">
+<div class="container my-5 p-4 rounded shadow-sm" style="background-color: #e7e7e7; max-width: 600px;">
   <h2 class="text-center mb-4" style="color: #241344; font-weight: bold;">Crear reseña</h2>
 
   <!-- Calificación numérica -->
@@ -39,6 +38,16 @@
               style="height: 120px;"></textarea>
     <label for="comentario" style="color: #241344;">Comentario</label>
   </div>
+
+  <!-- Es spoiler? -->
+  <div class="form-check mb-4">
+    <input type="checkbox"
+          class="form-check-input"
+          id="spoilerCheck"
+          [(ngModel)]="isSpoiler">
+    <label class="form-check-label" for="spoilerCheck" style="color: #241344;">¿Contiene spoilers?</label>
+  </div>
+
 
   <!-- Botón enviar -->
   <div class="text-center">

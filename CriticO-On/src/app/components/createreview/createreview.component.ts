@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ContentdetailComponent } from "../contentdetail/contentdetail.component";
 import { NgIf, NgFor, NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CreatereviewService } from '../../services/createreview.service';
 
 @Component({
   selector: 'app-createreview',
@@ -10,8 +11,13 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './createreview.component.html',
   styleUrl: './createreview.component.css'
 })
+
 export class CreatereviewComponent {
+  @Input() contentId!: number;
+  @Input() userId!: number;
+
   rating: number = 10;
+  isSpoiler: boolean = false; // <- nueva propiedad
 
   // Devuelve arreglo de 10 elementos con valores true (llena) o false (vacía)
   get starsArray(): boolean[] {
@@ -30,7 +36,7 @@ export class CreatereviewComponent {
   onRatingInput(event: Event): void {
     const input = event.target as HTMLInputElement;
     let value = parseFloat(input.value);
-  
+
     if (isNaN(value)) {
       this.rating = 0;
     } else if (value > 10) {
@@ -40,10 +46,21 @@ export class CreatereviewComponent {
     } else {
       this.rating = value;
     }
-  
-    // Forzar visualmente el valor corregido en el input
+
     input.value = this.rating.toString();
   }
-  
 
+  // (Opcional) Para cuando implementes el submit
+  submitReview(comment: string) {
+    const reviewPayload = {
+      contentId: this.contentId,
+      userId: this.userId,
+      rating: this.rating,
+      comment: comment,
+      containsSpoiler: this.isSpoiler
+    };
+
+    console.log('Review enviada:', reviewPayload);
+    // Aquí deberías llamar al servicio para guardar la reseña en el backend
+  }
 }
