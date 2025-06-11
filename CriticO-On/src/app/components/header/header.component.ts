@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { OffcanvasComponent } from "../offcanvas/offcanvas.component";
 
 @Component({
@@ -10,4 +11,13 @@ import { OffcanvasComponent } from "../offcanvas/offcanvas.component";
 })
 export class HeaderComponent {
 
+  constructor(private router: Router){}
+
+  goToLogin() {
+    this.router.navigate(['/login']);
+  }
+
+  goToSignIn() {
+    this.router.navigate(['/signin']);
+  }
 }
