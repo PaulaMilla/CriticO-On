@@ -1,46 +1,35 @@
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #241344;">
-    <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        
-                <!-- DROPDOWN -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">
-                        ☰
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </li>
-                <!-- LOGO -->
-                
-                </ul>
-                <!-- LOGO CENTRADO -->
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="navbar-brand" href="#" style="color: white;">
-                            <img src="assets/logo.png" alt="" width="150" height="150" class="d-inline-block align-text-top">
-                        </a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-                
-                
-                <!-- LUPA Y AVATAR -->
-            <div class="d-flex align-items-center">
-                <a href="#" class="nav-link me-3" style="color: white; font-size: 1.5rem;">
-                    <i class="fa fa-search" style="color: #FA772E;"></i>
-                </a>
-                <a href="#" class="nav-link">
-                    <img src="assets/avatar.png" alt="Avatar" width="50" height="50" style="border-radius: 50%;">
-                </a>
-            </div>
-        </div>
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #241344;">
+  <div class="container-fluid d-flex justify-content-between align-items-center">
+
+    <!-- IZQUIERDA: OFFCANVAS BUTTON (Móvil y Desktop) -->
+    <div class="d-flex align-items-center">
+      <app-offcanvas></app-offcanvas>
     </div>
+
+    <!-- CENTRO: LOGO (siempre centrado) -->
+    <div class="d-flex justify-content-center flex-grow-1">
+      <a class="navbar-brand mx-auto" >
+        <img src="assets/logo.png" alt="Logo" width="150" height="150" class="d-inline-block align-text-top">
+      </a>
+    </div>
+
+    <!-- DERECHA: LUPA + AVATAR -->
+    <div class="d-flex align-items-center">
+      <div class="search-container position-relative">
+        <input type="text" class="form-control ps-5 search-hover" placeholder="Search here..." style="padding-left: 2.5rem;">
+        <span class="position-absolute top-50 start-0 translate-middle-y ps-0 search-hover-icon">
+          <i class="fa fa-search" style="color: #FA772E;"></i>
+        </span>
+      </div>
+      <div class="btn-group">
+        <a href="#" id="imageDropdown" class="dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" >
+          <img src="assets/anon.png" alt="Avatar" width="60" height="60" style="border-radius: 50%;">
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" role="menu" aria-labelledby="imageDropdown">
+          <li><button class="dropdown-item" type="button">Iniciar sesión</button></li>
+          <li><button class="dropdown-item" type="button">Registrarse</button></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </nav>
