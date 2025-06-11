@@ -12,7 +12,7 @@ import {NgClass, NgForOf} from "@angular/common";
   templateUrl: './carrusel.component.html',
   styleUrl: './carrusel.component.css'
 })
-export class CarouselComponent implements OnInit {
+export class CarruselComponent implements OnInit {
   recientes: any[] = [];
 
   constructor(private contentService: ContentService) {}
