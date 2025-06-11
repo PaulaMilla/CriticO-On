@@ -1,0 +1,19 @@
+<h2 class="populares-title">Populares</h2>
+
+<div class="populares-container">
+  <div class="card populares-card" *ngFor="let slide of reviewSlides">
+    <img [src]="slide.url_foto" class="card-img-top populares-img mx-auto d-block">
+    <div class="card-body">
+      <h5 class="card-title populares-comentario">"{{ slide.review.comentario }}"</h5>
+      <br>
+      <p class="card-text">Rating ⭐: {{ slide.review.rating }}</p>
+      <p class="card-text">Likes ❤️: {{ slide.review.cantidad_likes }}</p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

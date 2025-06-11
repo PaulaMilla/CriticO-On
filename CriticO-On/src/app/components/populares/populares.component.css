@@ -1,0 +1,29 @@
+.populares-title {
+  margin-left: 0.9em;
+  margin-top: 0.9em;
+}
+
+.populares-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem; /* equivalente a Bootstrap gap-3 */
+  padding: 1rem;
+  white-space: nowrap;
+}
+
+.populares-card {
+  width: 15rem;
+  flex: 0 0 auto;
+}
+
+.populares-img {
+  height: 250px;
+  width: auto;
+  object-fit: cover;
+}
+
+.populares-comentario {
+  white-space: normal;
+  text-align: center;
+  font-style: italic;
+}
