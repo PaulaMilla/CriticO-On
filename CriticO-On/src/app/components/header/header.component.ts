@@ -13,15 +13,17 @@ import { NgIf } from '@angular/common';
 })
 export class HeaderComponent {
   isAuthenticated = false;
+  user: any; 
 
   constructor(private router: Router, private authService: AuthServiceService ){}
 
   ngOnInit(): void {
     this.authService.authStatus$.subscribe(status => {
       this.isAuthenticated = status;
+      this.user = this.authService.getLoggedInUser();
     });
   }
-
+  
   goToLogin() {
     this.router.navigate(['/login']);
   }
