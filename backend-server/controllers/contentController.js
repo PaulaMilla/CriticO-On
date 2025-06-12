@@ -106,3 +106,26 @@ exports.getRecientes = (req, res) => {
     });
 };
 
+exports.getReviewsByContenido = (req, res) => {
+  const idSp = req.params.id;
+
+  const sql = `
+    SELECT r.id_review, r.comentario, r.rating, r.fecha, r.spoiler, r.cantidad_likes,
+           u.nombre, u.alias, u.url_avatar
+    FROM review r
+    JOIN review_sp rsp ON r.id_review = rsp.fk_review
+    JOIN usuario_review ur ON r.id_review = ur.fk_review
+    JOIN usuario_registrado u ON ur.fk_usuario = u.id_usuario
+    WHERE rsp.fk_sp = ?
+    ORDER BY r.fecha DESC
+  `;
+
+  db.query(sql, [idSp], (err, results) => {
+    if (err) {
+      console.error('Error al obtener reviews:', err);
+      return res.status(500).json({ error: 'Error al obtener reviews' });
+    }
+
+    res.json(results);
+  });
+};

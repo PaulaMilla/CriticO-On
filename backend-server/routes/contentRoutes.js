@@ -7,6 +7,7 @@ router.get('/review', contentController.getReviews);
 router.get('/populares', contentController.getPopulares);
 router.get('/recientes', contentController.getRecientes);
 router.get('/:id', contentController.getContenidoById);
+router.get('/:id/reviews', contentController.getReviewsByContenido);
 
 
 module.exports = router;
