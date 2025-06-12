@@ -6,7 +6,13 @@
         class="carousel-item"
         [ngClass]="{ 'active': i === 0 }"
       >
-        <img [src]="item.url_foto" class="d-block mx-auto" alt="{{ item.nombre }}">
+        <img 
+          [src]="item.url_foto" 
+          class="d-block mx-auto" 
+          alt="{{ item.nombre }}"
+          (click)="verDetalles(item.id_sp)" 
+          style="cursor: pointer;"
+        >
         <div class="carousel-caption d-none d-md-block">
           <h5>{{ item.nombre }}</h5>
         </div>
