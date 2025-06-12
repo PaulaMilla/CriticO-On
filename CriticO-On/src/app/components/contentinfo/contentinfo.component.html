@@ -1,0 +1,78 @@
+<div class="container my-5">
+  <div class="row">
+    <!-- Columna izquierda: Texto -->
+    <div class="col-md-8 mb-4 mb-md-0">
+      <h1 class="fw-bold mb-4" style="color: #241344;">{{ content?.nombre }}</h1>
+
+      <p class="fs-5">{{ content?.descripcion }}</p>
+
+      <div class="mt-4">
+        <p *ngIf="content?.temporadas !== null && content?.temporadas > 0" class="fs-6">
+          <strong>Temporadas:</strong> {{ content.temporadas }}
+        </p>
+      </div>
+      <div class="mt-4">
+        <button 
+            class="btn mt-3 px-4 py-2 text-white fw-semibold shadow-sm"
+            style="background-color: #FA772E; border: none; "
+            (click)="irACrearReview()"
+            >
+            Agregar crítica!
+            </button>
+      </div>
+    </div>
+
+    <!-- Columna derecha: Card con imagen y fecha -->
+    <div class="col-md-4">
+      <div class="card shadow-sm" style="background-color: #241344; color: white; border-radius: 12px;">
+        <img 
+          [src]="content?.url_foto || 'assets/default-image.jpg'" 
+          alt="{{ content?.nombre }}" 
+          class="card-img-top" 
+          style="border-top-left-radius: 12px; border-top-right-radius: 12px; max-height: 500px; object-fit: cover;"
+        />
+        <div class="card-body">
+          <p class="card-text text-center mb-0">
+            <strong>Fecha de estreno:</strong> {{ content?.fecha | date:'dd-MM-yyyy' }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <h3 class="mb-4">Reseñas de la comunidad</h3>
+
+  <div *ngIf="reviews.length === 0">
+    <p class="text-muted">Aún no hay críticas para este contenido.</p>
+  </div>
+
+<div *ngFor="let review of reviews" class="mb-4 p-4 border rounded shadow-sm" style="background-color: #f8f9fa;">
+    <div class="d-flex align-items-center mb-3">
+        <img [src]="review.url_avatar || 'assets/default-avatar.png'" alt="avatar"
+                 class="rounded-circle me-3" style="width: 50px; height: 50px; object-fit: cover;">
+        <div>
+            <strong>{{ review.alias }}</strong> <br />
+            <small class="text-muted">{{ review.fecha | date:'dd-MM-yyyy' }}</small>
+        </div>
+    </div>
+
+    <div>
+        <ng-container *ngIf="review.spoiler; else noSpoiler">
+            <button class="btn btn-warning btn-sm mb-2" (click)="review.showSpoiler = !review.showSpoiler">
+                {{ review.showSpoiler ? 'Ocultar comentario' : 'Mostrar comentario (spoiler)' }}
+            </button>
+            <p class="mb-2" *ngIf="review.showSpoiler">{{ review.comentario }}</p>
+        </ng-container>
+        <ng-template #noSpoiler>
+            <p class="mb-2">{{ review.comentario }}</p>
+        </ng-template>
+        <div class="d-flex justify-content-between align-items-center">
+            <span class="badge bg-primary">⭐ {{ review.rating }}</span>
+            <span *ngIf="review.spoiler" class="badge bg-warning text-dark">Contiene spoiler</span>
+            <span class="text-muted"><i class="fa-solid fa-thumbs-up"></i> {{ review.cantidad_likes }}</span>
+        </div>
+    </div>
+</div>
+</div>
