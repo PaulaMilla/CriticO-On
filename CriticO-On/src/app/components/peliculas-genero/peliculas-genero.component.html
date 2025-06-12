@@ -1,0 +1,7 @@
+<p>peliculas-genero works!</p>
+<h2>Películas de {{ genero() }}</h2>
+<div *ngFor="let pelicula of peliculas()">
+  <img [src]="pelicula.url_foto" alt="{{ pelicula.nombre }}" width="200">
+  <h3>{{ pelicula.nombre }}</h3>
+  <p>{{ pelicula.descripcion }}</p>
+</div>

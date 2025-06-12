@@ -1,0 +1,40 @@
+.genre-categories {
+  background-color: #241344;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 2rem;
+  gap: 1rem;
+}
+
+.genre-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.genre-card:hover {
+  transform: scale(1.1);
+}
+
+.genre-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: rgb(243, 237, 237);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.genre-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

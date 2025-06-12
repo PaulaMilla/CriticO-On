@@ -16,6 +16,9 @@ const mainRoutes = require('./routes/mainRoutes');
 const contentRoutes = require('./routes/contentRoutes');
 const reviewRoutes = require('./routes/reviewRoutes');
 
+const categoriaRoutes = require('./routes/categoriaRoutes');
+app.use('/api/categorias', categoriaRoutes);
+
 app.use('/api/review', reviewRoutes);
 app.use('/api', mainRoutes);
 app.use('/api/content', contentRoutes);
