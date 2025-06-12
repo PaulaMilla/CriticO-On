@@ -10,7 +10,7 @@ export interface Review {
 }
 
 export interface SeriePelicula {
-  id_sp: number;
+  id: number;
   url_foto: string;
 }
 
