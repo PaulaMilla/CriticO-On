@@ -15,7 +15,6 @@
   scrollbar-color: #ec7626 transparent;
 }
 
-/* Estilo opcional para Webkit (Chrome, Safari) */
 .movies-scroll-container::-webkit-scrollbar {
   height: 8px;
 }
@@ -67,4 +66,14 @@
 
 .movie-title {
   font-size: 1.1rem;
-  font
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.movie-description {
+  font-size: 0.85rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
