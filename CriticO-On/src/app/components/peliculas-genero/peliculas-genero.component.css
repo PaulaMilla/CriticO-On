@@ -1,6 +1,19 @@
-h2 {
-    color: #ff69b4;
-  }
-  img {
-    border-radius: 8px;
-  }
+.titulo {
+  text-align: center;
+  color: #ec7626;
+}
+
+.pelicula-container {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+img {
+  border-radius: 8px;
+}
+
+.pelicula-info {
+  flex: 1;
+}
