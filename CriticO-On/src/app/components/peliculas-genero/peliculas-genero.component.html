@@ -3,7 +3,13 @@
 
   <div class="movies-scroll-container">
     <div *ngFor="let pelicula of peliculas()" class="movie-card me-3">
-      <img [src]="pelicula.url_foto" class="movie-img" alt="{{ pelicula.nombre }}">
+      <img 
+        [src]="pelicula.url_foto" 
+        class="movie-img" 
+        alt="{{ pelicula.nombre }}" 
+        (click)="verDetalles(pelicula.id)"
+        style="cursor: pointer"
+      >
       <div class="movie-overlay">
         <div class="movie-title">{{ pelicula.nombre }}</div>
         <p class="movie-description">{{ pelicula.descripcion }}</p>

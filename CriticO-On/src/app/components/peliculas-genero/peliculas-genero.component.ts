@@ -3,6 +3,8 @@ import { CategoriaService } from '../../services/categoria.service';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
+import {NgClass, NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-peliculas-genero',
@@ -18,7 +20,7 @@ export class PeliculasGeneroComponent {
   genero = signal<string>(''); 
   peliculas = signal<any[]>([]); 
 
-  constructor() {
+  constructor(private router: Router) {
     this.route.paramMap.subscribe(params => {
       const generoParam = params.get('genero') || 'Desconocido';
       this.genero.set(generoParam);
@@ -33,4 +35,10 @@ export class PeliculasGeneroComponent {
       }
     });
   }
+
+  verDetalles(id: number) {
+    console.log('Navegando a ID:', id); // Para debug
+    this.router.navigate(['/content', id]);
+  }
+
 }
