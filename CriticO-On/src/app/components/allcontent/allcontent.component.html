@@ -1,0 +1,22 @@
+<h2 class="text-center mt-4">Todas las series y películas</h2>
+<br>
+
+<div class="row justify-content-center">
+  <div class="col-auto mb-4" *ngFor="let item of contenido">
+    <div class="card" style="width: 15rem;">
+      <img
+        [src]="item.url_foto"
+        class="card-img-top"
+        (click)="verDetalles(item.id_sp)"
+        style="cursor: pointer; height: 290px; object-fit: cover;"
+        alt="{{ item.nombre }}">
+      <div class="card-body">
+        <h5 class="card-title">{{ item.nombre }}</h5>
+        <p class="card-text">Fecha: {{ item.fecha | date:'longDate' }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

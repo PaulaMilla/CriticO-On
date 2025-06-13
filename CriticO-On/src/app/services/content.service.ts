@@ -33,4 +33,9 @@ export class ContentService {
     return this.http.get<any[]>(`${this.apiUrl}/${id}/reviews`);
   }
 
+  getAllContenido(): Observable<{ data: Contenido[] }> {
+    return this.http.get<{ data: Contenido[] }>(`${this.apiUrl}/serie_pelicula`);
+  }
+
+
 }
