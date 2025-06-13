@@ -8,7 +8,7 @@ const User = {
         
         mc.query(query, [
             'usuario',
-            null,
+            'https://cdn-icons-png.flaticon.com/512/12965/12965377.png',
             user.nombre,
             user.alias,
             user.correo,
