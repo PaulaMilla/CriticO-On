@@ -17,7 +17,7 @@ export interface Contenido {
 
 export class ContentService {
 
-  private apiUrl = 'http://localhost:3000/api/content';
+  private apiUrl = '/api/content';
 
   constructor(private http: HttpClient) {}
 

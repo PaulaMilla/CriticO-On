@@ -21,7 +21,7 @@ interface LoginData {
 })
 export class AuthServiceService {
 
-  private apiUrl = 'http://localhost:3000/api/auth';
+  private apiUrl = '/api/auth';
   private authStatus = new BehaviorSubject<boolean>(this.isLoggedIn());
   authStatus$ = this.authStatus.asObservable();
 

@@ -1,0 +1,52 @@
+services:
+  frontend:
+    build: ./CriticO-On
+    ports:
+      - "8011:80"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  backend:
+    build: ./backend-server
+    expose:
+      - "3000"
+    environment:
+      - DB_HOST=db
+      - DB_USER=criticuser
+      - DB_PASSWORD=criticpass
+      - DB_NAME=criticoon-db
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - app-network
+
+  db:
+    image: mysql:5.7
+    container_name: mysql-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: criticoon-db
+      MYSQL_USER: criticuser
+      MYSQL_PASSWORD: criticpass
+    volumes:
+      - ./db-criticoon/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - db-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-prootpass"]
+      timeout: 20s
+      retries: 10
+      interval: 10s
+      start_period: 30s
+    networks:
+      - app-network
+
+volumes:
+  db-data:
+
+networks:
+  app-network:
+    driver: bridge

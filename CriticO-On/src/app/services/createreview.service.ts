@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class CreatereviewService {
-  private apiUrl= 'http://localhost:3000/api/review/reviews';
+  private apiUrl= '/api/review/reviews';
   constructor(private http: HttpClient) { }
 
   createReview(review:{
