@@ -53,6 +53,7 @@ exports.getPopulares = (req, res) => {
                      JOIN review r ON rsp.fk_review = r.id_review
             GROUP BY rsp.fk_sp
         ) as top_review ON rsp.fk_sp = top_review.fk_sp AND r.cantidad_likes = top_review.max_likes
+        ORDER BY rating DESC
     `;
 
     db.query(sql, (err, results) => {

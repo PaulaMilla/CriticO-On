@@ -1,11 +1,13 @@
-<h2 class="populares-title">Populares</h2>
+<br>
+<h2 class="text-center mt-4">Populares</h2>
+<h5 class="text-center mt-4"> El mejor contenido, votado por nuestros Criticones </h5>
 
 <div class="populares-container">
   <div class="card populares-card" *ngFor="let slide of reviewSlides">
-    <img 
-      [src]="slide.url_foto" 
-      class="card-img-top populares-img mx-auto d-block" 
-      (click)="verDetalles(slide.id_sp)" 
+    <img
+      [src]="slide.url_foto"
+      class="card-img-top populares-img mx-auto d-block"
+      (click)="verDetalles(slide.id_sp)"
       style="cursor: pointer;"
     >
     <div class="card-body">
