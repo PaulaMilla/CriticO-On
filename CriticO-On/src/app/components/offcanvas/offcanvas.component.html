@@ -1,25 +1,130 @@
 <ng-template #content let-offcanvas>
-	<div class="offcanvas-header" style="background-color: #241344; color: white;">
-		<h4 class="offcanvas-title">CriticO-On!</h4>
-        <button type="button" class="btn-close btn-close-white" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
-	</div>
-	<div class="offcanvas-body" style="background-color: #241344; color: white;">
-		<ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Another link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
-        </ul>
-	</div>
-</ng-template>
-
-<button class="btn btn-lg btn-outline-light mb-2 me-2" 
-    (click)="openCustomPanelClass(content)" 
-    style="color: white; background-color: #241344; border-color: #241344; box-shadow: #241344;">
-    <i class="fas fa-bars"></i>
-</button>
+    <div class="offcanvas-header" style="background-color: #241344; color: white;">
+      <h4 class="offcanvas-title">CriticO-On!</h4>
+      <button type="button" class="btn-close btn-close-white" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
+    </div>
+    <div class="offcanvas-body" style="background-color: #241344; color: white;">
+      
+      <!-- Información del usuario logueado -->
+      <div class="mb-3 pb-3 border-bottom border-secondary" *ngIf="currentUser">
+        <div class="d-flex align-items-center">
+          <img [src]="currentUser.url_avatar || 'https://cdn-icons-png.flaticon.com/512/12965/12965377.png'" 
+               alt="Avatar" 
+               class="rounded-circle me-3" 
+               style="width: 45px; height: 45px; object-fit: cover;">
+          <div>
+            <div class="fw-bold text-white">{{ currentUser.alias }}</div>
+            <small class="text-light opacity-75">{{ currentUser.correo }}</small>
+            <div *ngIf="isAdmin" class="badge bg-warning text-dark mt-1">
+              <i class="fas fa-crown me-1"></i>Administrador
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link text-white d-flex align-items-center" 
+             routerLink="/" 
+             (click)="offcanvas.dismiss()">
+            <i class="fas fa-home me-3"></i>Home
+          </a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link text-white d-flex align-items-center" 
+             routerLink="/reviews" 
+             (click)="offcanvas.dismiss()">
+            <i class="fas fa-star me-3"></i>Reviews
+          </a>
+        </li>
+  
+        <li class="nav-item" *ngIf="currentUser">
+          <a class="nav-link text-white d-flex align-items-center" 
+             routerLink="/profile" 
+             (click)="offcanvas.dismiss()">
+            <i class="fas fa-user me-3"></i>Mi Perfil
+          </a>
+        </li>
+  
+        <!-- SECCIÓN DE ADMINISTRADOR - Solo visible para admins -->
+        <ng-container *ngIf="isAdmin">
+          <li class="nav-item mt-3">
+            <hr class="border-secondary opacity-50">
+            <div class="text-warning fw-bold mb-2 ps-2">
+              <i class="fas fa-cog me-2"></i>ADMINISTRACIÓN
+            </div>
+          </li>
+  
+          <li class="nav-item">
+            <a class="nav-link text-white d-flex align-items-center ps-4" 
+               routerLink="/admin/dashboard" 
+               (click)="offcanvas.dismiss()">
+              <i class="fas fa-tachometer-alt me-3"></i>Panel de Control
+            </a>
+          </li>
+  
+          <li class="nav-item">
+            <a class="nav-link text-white d-flex align-items-center ps-4" 
+               routerLink="/admin/users" 
+               (click)="offcanvas.dismiss()">
+              <i class="fas fa-users me-3"></i>Gestionar Usuarios
+            </a>
+          </li>
+  
+          <li class="nav-item">
+            <a class="nav-link text-white d-flex align-items-center ps-4" 
+               routerLink="/admin/content" 
+               (click)="offcanvas.dismiss()">
+              <i class="fas fa-film me-3"></i>Gestionar Contenido
+            </a>
+          </li>
+  
+          <li class="nav-item">
+            <a class="nav-link text-white d-flex align-items-center ps-4" 
+               routerLink="/admin/categories" 
+               (click)="offcanvas.dismiss()">
+              <i class="fas fa-tags me-3"></i>Categorías
+            </a>
+          </li>
+  
+          <li class="nav-item">
+            <a class="nav-link text-white d-flex align-items-center ps-4" 
+               routerLink="/admin/reports" 
+               (click)="offcanvas.dismiss()">
+              <i class="fas fa-chart-bar me-3"></i>Reportes
+            </a>
+          </li>
+        </ng-container>
+  
+        <!-- Separador -->
+        <li class="nav-item mt-3" *ngIf="currentUser">
+          <hr class="border-secondary opacity-50">
+        </li>
+  
+        <!-- Logout -->
+        <li class="nav-item" *ngIf="currentUser">
+          <a class="nav-link text-danger d-flex align-items-center" 
+             href="#" 
+             (click)="logout(); offcanvas.dismiss()">
+            <i class="fas fa-sign-out-alt me-3"></i>Cerrar Sesión
+          </a>
+        </li>
+  
+        <!-- Login - Solo si no está logueado -->
+        <li class="nav-item" *ngIf="!currentUser">
+          <a class="nav-link text-success d-flex align-items-center" 
+             routerLink="/login" 
+             (click)="offcanvas.dismiss()">
+            <i class="fas fa-sign-in-alt me-3"></i>Iniciar Sesión
+          </a>
+        </li>
+      </ul>
+    </div>
+  </ng-template>
+  
+  <button class="btn btn-lg btn-outline-light mb-2 me-2" 
+      (click)="openCustomPanelClass(content)" 
+      style="color: white; background-color: #241344; border-color: #241344; box-shadow: #241344;">
+      <i class="fas fa-bars"></i>
+  </button>
