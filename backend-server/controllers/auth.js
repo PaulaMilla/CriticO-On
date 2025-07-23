@@ -48,7 +48,7 @@ exports.login = async (req, res) => {
                 { 
                     id_usuario: user.id_usuario, 
                     correo: user.correo,
-                    rol: user.rol // ← AGREGAMOS EL ROL AL TOKEN
+                    rol: user.rol 
                 },
                 SECRET_KEY,
                 { expiresIn: '2h' }
