@@ -2,7 +2,7 @@ const Review = require('../models/Review');
 
 exports.createReview = (req, res) => {
   const { comentario, rating, fecha, spoiler, userId, contentId } = req.body;
-
+  console.log('Cuerpo recibido desde el frontend:', req.body);
   if (rating < 0 || rating > 10) {
     return res.status(400).json({ message: 'El rating debe estar entre 0 y 10' });
   }

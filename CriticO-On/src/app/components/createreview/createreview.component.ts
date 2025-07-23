@@ -62,9 +62,9 @@ export class CreatereviewComponent {
   }
 
   submitReview() {
-    const currentDate = new Date().toISOString();
+    const currentDate = new Date().toISOString().split('T')[0];
 
-    console.log('Enviando reseña: ');
+    console.log('Enviando reseña: '+currentDate);
     this.reviewservice.createReview({
       comentario: this.comment,
       rating: this.rating,
