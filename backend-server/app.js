@@ -23,6 +23,12 @@ app.use('/api/review', reviewRoutes);
 app.use('/api', mainRoutes);
 app.use('/api/content', contentRoutes);
 
+// Middleware para manejo global de errores
+app.use((err, req, res, next) => {
+  console.error('Error capturado:', err.stack || err);
+  res.status(500).json({ error: 'Error interno del servidor', details: err.message || err });
+});
+
 app.listen(3000, ()=>{
     console.log("Express server - puerto 3000 online");
 });
