@@ -9,6 +9,7 @@ exports.obtenerPeliculasPorGenero = (req, res) => {
         JOIN sp_genero sg ON sp.id_sp = sg.fk_sp
         JOIN genero g ON sg.fk_genero = g.id_genero
         WHERE g.nombre = ?
+        ORDER BY rating DESC
     `;
 
     mysql.query(query, [generoNombre], (error, results) => {
