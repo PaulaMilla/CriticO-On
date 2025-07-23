@@ -1,0 +1,48 @@
+<div class="container mt-4">
+
+  <div class="d-flex justify-content-end align-items-center my-3 gap-2">
+    <label for="anio" class="me-2">Filtrar por año:</label>
+
+    <select id="anio" [(ngModel)]="anioSeleccionado" class="form-select w-auto">
+      <option [ngValue]="null">Todos</option>
+      <option *ngFor="let anio of aniosDisponibles" [value]="anio">{{ anio }}</option>
+    </select>
+
+    <button class="btn btn-orange" (click)="actualizarFiltro()">
+      <i class="bi bi-filter"></i> Aplicar Filtro
+    </button>
+  </div>
+
+
+  <h2 class="text-center mb-4">Resultados de la búsqueda</h2>
+
+  <div *ngIf="resultados.length === 0" class="text-center">
+    <p>No se encontraron resultados.</p>
+  </div>
+
+
+
+  <div class="row justify-content-center">
+    <div class="col-md-4 mb-4" *ngFor="let item of resultados">
+      <div class="card h-100 shadow-sm">
+        <img
+          [src]="item.url_foto"
+          (click)="verDetalles(item.id_sp)"
+          class="card-img-top"
+          alt="{{ item.nombre }}"
+          style="cursor: pointer; height: 280px; object-fit: cover;"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ item.nombre }}</h5>
+          <p class="card-text">
+            <strong>Fecha:</strong> {{ item.fecha | date: 'longDate' }}<br />
+            <strong>Descripción:</strong> {{ item.descripcion }}<br />
+            <strong>Géneros:</strong> {{ item.generos }}<br />
+            <strong>Actores:</strong> {{ item.actores }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

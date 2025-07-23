@@ -37,5 +37,18 @@ export class ContentService {
     return this.http.get<{ data: Contenido[] }>(`${this.apiUrl}/serie_pelicula`);
   }
 
+  getAniosDisponibles() {
+    return this.http.get<number[]>(`${this.apiUrl}/anios`);
+  }
+
+
+  buscarContenidoPorTermino(termino: string, anio: any) {
+    let url = `${this.apiUrl}/buscar?termino=${encodeURIComponent(termino)}`;
+    if (anio) {
+      url += `&anio=${anio}`;
+    }
+    return this.http.get<any[]>(url);
+  }
+
 
 }

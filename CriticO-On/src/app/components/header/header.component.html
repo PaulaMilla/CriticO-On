@@ -16,10 +16,17 @@
     <!-- DERECHA: LUPA + AVATAR -->
     <div class="d-flex align-items-center">
       <div class="search-container position-relative me-3">
-        <input type="text" class="form-control ps-5 search-hover" placeholder="Search here..." style="padding-left: 2.5rem;">
+        <input type="text"
+               [(ngModel)]="terminoBusqueda"
+               class="form-control ps-5 search-hover"
+               placeholder="Search here..."
+               (keyup.enter)="buscar()"
+               style="padding-left: 2.5rem;">
+
         <span class="position-absolute top-50 start-0 translate-middle-y ps-0 search-hover-icon">
           <i class="fa fa-search" style="color: #FA772E;"></i>
         </span>
+
       </div>
 
       <!-- Avatar y Dropdown -->
@@ -30,11 +37,11 @@
             {{ user.alias || user.nombre }}
           </span>
           <!-- Avatar -->
-          <img 
-            [src]="isAuthenticated ? 'assets/avatar.png'  : 'assets/anon.png'" 
-            alt="Avatar" 
-            width="60" 
-            height="60" 
+          <img
+            [src]="isAuthenticated ? 'assets/avatar.png'  : 'assets/anon.png'"
+            alt="Avatar"
+            width="60"
+            height="60"
             style="border-radius: 50%; object-fit: cover;"
           >
 

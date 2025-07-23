@@ -1,0 +1,11 @@
+.btn-orange {
+  background-color: #FA772E; /* naranjo brillante */
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-orange:hover {
+  background-color: #e96c00;
+  color: white;
+}
