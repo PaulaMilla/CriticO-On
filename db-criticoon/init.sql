@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 16, 2025 at 01:12 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 23-07-2025 a las 18:29:49
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `criticoon-db`
+-- Base de datos: `criticoon-db`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `actor`
+-- Estructura de tabla para la tabla `actor`
 --
 
 CREATE TABLE `actor` (
@@ -36,7 +36,7 @@ CREATE TABLE `actor` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `actor`
+-- Volcado de datos para la tabla `actor`
 --
 
 INSERT INTO `actor` (`id_actor`, `nombre`, `url_foto`, `nacionalidad`, `fecha_nacimiento`) VALUES
@@ -49,7 +49,7 @@ INSERT INTO `actor` (`id_actor`, `nombre`, `url_foto`, `nacionalidad`, `fecha_na
 -- --------------------------------------------------------
 
 --
--- Table structure for table `actor_sp`
+-- Estructura de tabla para la tabla `actor_sp`
 --
 
 CREATE TABLE `actor_sp` (
@@ -58,7 +58,7 @@ CREATE TABLE `actor_sp` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `actor_sp`
+-- Volcado de datos para la tabla `actor_sp`
 --
 
 INSERT INTO `actor_sp` (`fk_actor`, `fk_sp`) VALUES
@@ -72,7 +72,7 @@ INSERT INTO `actor_sp` (`fk_actor`, `fk_sp`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `genero`
+-- Estructura de tabla para la tabla `genero`
 --
 
 CREATE TABLE `genero` (
@@ -81,7 +81,7 @@ CREATE TABLE `genero` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `genero`
+-- Volcado de datos para la tabla `genero`
 --
 
 INSERT INTO `genero` (`id_genero`, `nombre`) VALUES
@@ -96,7 +96,7 @@ INSERT INTO `genero` (`id_genero`, `nombre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `review`
+-- Estructura de tabla para la tabla `review`
 --
 
 CREATE TABLE `review` (
@@ -109,7 +109,7 @@ CREATE TABLE `review` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `review`
+-- Volcado de datos para la tabla `review`
 --
 
 INSERT INTO `review` (`id_review`, `comentario`, `rating`, `cantidad_likes`, `fecha`, `spoiler`) VALUES
@@ -124,15 +124,12 @@ INSERT INTO `review` (`id_review`, `comentario`, `rating`, `cantidad_likes`, `fe
 (9, 'El desarrollo de personajes es simplemente brillante.', 9.3, 245, '2023-06-22', 0),
 (10, 'Una narrativa única que rompe los esquemas clásicos.', 9.1, 200, '2023-06-25', 0),
 (11, 'jujuju', 5.9, 0, '2025-06-12', 1),
-(12, 'excelenteeeeee', 9.9, 0, '2025-06-12', 0),
-(13, 'muy mala la custión', 3.0, 0, '2025-06-13', 1),
-(14, 'asd', 5.0, 0, '2025-06-13', 1),
-(15, 'ta mala', 3.0, 0, '2025-06-13', 1);
+(12, 'buenw buenq ', 5.0, 0, '2025-06-13', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `review_sp`
+-- Estructura de tabla para la tabla `review_sp`
 --
 
 CREATE TABLE `review_sp` (
@@ -141,27 +138,24 @@ CREATE TABLE `review_sp` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `review_sp`
+-- Volcado de datos para la tabla `review_sp`
 --
 
 INSERT INTO `review_sp` (`fk_review`, `fk_sp`) VALUES
 (1, 1),
 (11, 1),
-(13, 1),
 (2, 2),
 (3, 3),
-(14, 3),
-(15, 3),
+(12, 3),
 (4, 4),
 (5, 5),
 (9, 6),
-(10, 7),
-(12, 8);
+(10, 7);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `serie_pelicula`
+-- Estructura de tabla para la tabla `serie_pelicula`
 --
 
 CREATE TABLE `serie_pelicula` (
@@ -174,7 +168,7 @@ CREATE TABLE `serie_pelicula` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `serie_pelicula`
+-- Volcado de datos para la tabla `serie_pelicula`
 --
 
 INSERT INTO `serie_pelicula` (`id_sp`, `nombre`, `descripcion`, `fecha`, `url_foto`, `temporadas`) VALUES
@@ -193,13 +187,13 @@ INSERT INTO `serie_pelicula` (`id_sp`, `nombre`, `descripcion`, `fecha`, `url_fo
 (13, 'Solo leveling', 'En un mundo en el que ciertos humanos llamados «cazadores» poseen habilidades mágicas, estos deben luchar contra monstruos para proteger a la raza humana de una aniquilación segura', '2020-05-15', 'https://preview.redd.it/solo-levelling-s2-script-v0-e9cu5ptnxn2e1.jpeg?width=640&crop=smart&auto=webp&s=d9b400c6818b2360b1dfa43af79f8cebc7e8c1dd', 2),
 (14, 'Dandadan', 'DAN DA DAN: EVIL EYE sigue a Momo y Okarun, dos adolescentes que viajan a un misterioso pueblo de aguas termales para investigar un caso paranormal. Pero nada es lo que parece y pronto enfrentan fuerzas ocultas más peligrosas de lo esperado', '2020-05-15', 'https://a.storyblok.com/f/178900/1064x1504/54fc2adbc2/dan-da-dan-second-key-visual.jpg/m/filters:quality(95)format(webp)', 2),
 (15, 'Orgullo y prejuicio', 'Elizabeth Bennet conoce al apuesto y adinerado Sr. Darcy, con quien, rápidamente, inicia una intensa y compleja relación.', '2005-05-15', 'https://m.media-amazon.com/images/S/pv-target-images/15a41e61c30b3e9df74d61ac747fe3e1d5dc4ba30cf8ca3ac85a9148344efeba.jpg', 1),
-(16, 'La La Land: ciudad de sueños', 'Sebastian, un pianista de jazz, y Mia, una aspirante a actriz, se enamoran locamente; pero la ambición desmedida que tienen por triunfar en sus respectivas carreras, en una ciudad como Los Ángeles, repleta de competencia y carente de piedad, pone en peligro su amor.', '2017-05-15', 'https://visualprint-store.com/cdn/shop/files/uDO8zWDhfWwoFdKS4fzkUJt0Rf0.jpg?v=1713375923&width=1946', 1),
-(17, 'Call me by your name', 'En Italia, en la década de 1980, en medio del esplendor del verano, Elio y Oliver descubren la embriagadora belleza de un deseo naciente que va a alterar sus vidas para siempre.', '2018-05-15', 'https://visualprint-store.com/cdn/shop/files/tcNniniS4rfqrLH0oORikJfnIwY.jpg?v=1683398105&width=1946', 1);
+(16, 'La La Land: ciudad de sueños', 'Sebastian, un pianista de jazz, y Mia, una aspirante a actriz, se enamoran locamente; pero la ambición desmedida que tienen por triunfar en sus respectivas carreras, en una ciudad como Los Ángeles, repleta de competencia y carente de piedad, pone en peligro su amor.', '2017-05-15', 'https://pics.filmaffinity.com/La_ciudad_de_las_estrellas_La_La_Land-133356261-large.jpg', 1),
+(17, 'Call me by your name', 'En Italia, en la década de 1980, en medio del esplendor del verano, Elio y Oliver descubren la embriagadora belleza de un deseo naciente que va a alterar sus vidas para siempre.', '2018-05-15', 'https://pics.filmaffinity.com/Call_Me_by_Your_Name-241496265-large.jpg', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sp_genero`
+-- Estructura de tabla para la tabla `sp_genero`
 --
 
 CREATE TABLE `sp_genero` (
@@ -208,7 +202,7 @@ CREATE TABLE `sp_genero` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `sp_genero`
+-- Volcado de datos para la tabla `sp_genero`
 --
 
 INSERT INTO `sp_genero` (`fk_sp`, `fk_genero`) VALUES
@@ -230,7 +224,7 @@ INSERT INTO `sp_genero` (`fk_sp`, `fk_genero`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuario_registrado`
+-- Estructura de tabla para la tabla `usuario_registrado`
 --
 
 CREATE TABLE `usuario_registrado` (
@@ -245,7 +239,7 @@ CREATE TABLE `usuario_registrado` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `usuario_registrado`
+-- Volcado de datos para la tabla `usuario_registrado`
 --
 
 INSERT INTO `usuario_registrado` (`id_usuario`, `rol`, `url_avatar`, `nombre`, `alias`, `correo`, `password`, `fecha_registro`) VALUES
@@ -261,14 +255,16 @@ INSERT INTO `usuario_registrado` (`id_usuario`, `rol`, `url_avatar`, `nombre`, `
 (10, 'usuario', NULL, 'ares figueroa', 'ares', 'ares@gmail.com', '$2b$10$G757ooea1Sr14YosR/FU5edGkcEcBsqkREuvV4h106H7LjF6jv0MC', '2025-06-10'),
 (11, 'usuario', 'https://cdn-icons-png.flaticon.com/512/12965/12965377.png', 'bastian Figueroa', 'basti', 'bastian@gmail.com', '$2b$10$fYSkRyUBpuW3PEQFHht9AOThpVGPJiq7LbpEC3cwT9rfHx3/MWMWG', '2025-06-10'),
 (22, 'usuario', NULL, 'samuel samuel', 'sami', 'sami@gmail.com', '$2b$10$U1Nas9wv7V9z1szOeeFkre8HiRIJIpa285.L0/kMYnimGk1KmBVay', '2025-06-11'),
-(23, 'usuario', 'https://cdn-icons-png.flaticon.com/512/12965/12965377.png', 'fsdgsdf', 'prororo', 'a@a.com', '$2b$10$LRfjRkw46DVr7zr76MMtAe1TGZbCH9aya9SJYmLReGTw.qR4v2USm', '2025-06-12'),
-(24, 'usuario', 'https://cdn-icons-png.flaticon.com/512/12965/12965377.png', 'Julisa', 'juliiii', 'wa@gmail.com', '$2b$10$gyvHXP1/8DrffI4.epbUCu9G4P/Mwo6p1bsnEHFxfBK3V5qOn68sa', '2025-06-12'),
-(26, 'usuario', 'https://cdn-icons-png.flaticon.com/512/12965/12965377.png', 'a', 'a', 'a@aaa.com', '$2b$10$Rv4s5fQRQAIEY3ENuLdsk.YmMe5HSog1D2paVDOMhqLqCz5stdYU.', '2025-06-12');
+(24, 'usuario', 'https://cdn-icons-png.flaticon.com/512/12965/12965377.png', 'rrr', 'politor', 'pofiri@gmail.com', '$2b$10$mMDRfeIBpNizvlxpwuOWd.KW68GsP9AtxLMkW1FkMfsAJQHbm9y/i', '2025-07-22'),
+(25, 'usuario', 'https://cdn-icons-png.flaticon.com/512/12965/12965377.png', 'Julita', 'Julita', 'julita@gmail.com', '$2b$10$7O8gUkHch74CtyWosKA1veJXi23zVmym7TREH1bJTJePqHYyPZF9K', '2025-07-22'),
+(26, 'admin', 'https://cdn-icons-png.freepik.com/512/12965/12965381.png', 'Admin', 'admin', 'admin@criticoon.com', '12345678', '2025-07-22'),
+(27, 'usuario', 'https://cdn-icons-png.flaticon.com/512/12965/12965377.png', 'prueba12', 'prueba12', 'prueba12@gmail.com', '$2b$10$BeuzI0YZMOvTAmv3QRsy7u8UlZp3LUFxozo0Uf8Qrjp09zqIUFlBq', '2025-07-22'),
+(28, 'admin', 'https://cdn-icons-png.flaticon.com/512/12965/12965377.png', 'admin123', 'admin123', 'admin123@gmail.com', '$2b$10$K1igI40CE3Jpo.zh6t8DPOPsh4dNrdnOKOWKdODD7Vuir7kzCtDxS', '2025-07-22');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuario_review`
+-- Estructura de tabla para la tabla `usuario_review`
 --
 
 CREATE TABLE `usuario_review` (
@@ -278,7 +274,7 @@ CREATE TABLE `usuario_review` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `usuario_review`
+-- Volcado de datos para la tabla `usuario_review`
 --
 
 INSERT INTO `usuario_review` (`fk_usuario`, `fk_review`, `fecha`) VALUES
@@ -288,15 +284,12 @@ INSERT INTO `usuario_review` (`fk_usuario`, `fk_review`, `fecha`) VALUES
 (3, 3, '2023-07-02'),
 (4, 4, '2023-05-11'),
 (5, 5, '2023-04-19'),
-(23, 12, '2025-06-12'),
-(23, 13, '2025-06-13'),
-(24, 14, '2025-06-13'),
-(26, 15, '2025-06-13');
+(22, 12, '2025-06-13');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuario_sp`
+-- Estructura de tabla para la tabla `usuario_sp`
 --
 
 CREATE TABLE `usuario_sp` (
@@ -306,7 +299,7 @@ CREATE TABLE `usuario_sp` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `usuario_sp`
+-- Volcado de datos para la tabla `usuario_sp`
 --
 
 INSERT INTO `usuario_sp` (`fk_usuario`, `fk_sp`, `estado`) VALUES
@@ -320,57 +313,57 @@ INSERT INTO `usuario_sp` (`fk_usuario`, `fk_sp`, `estado`) VALUES
 (5, 1, 'viendo');
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `actor`
+-- Indices de la tabla `actor`
 --
 ALTER TABLE `actor`
   ADD PRIMARY KEY (`id_actor`);
 
 --
--- Indexes for table `actor_sp`
+-- Indices de la tabla `actor_sp`
 --
 ALTER TABLE `actor_sp`
   ADD PRIMARY KEY (`fk_actor`,`fk_sp`),
   ADD KEY `fk_sp` (`fk_sp`);
 
 --
--- Indexes for table `genero`
+-- Indices de la tabla `genero`
 --
 ALTER TABLE `genero`
   ADD PRIMARY KEY (`id_genero`),
   ADD UNIQUE KEY `nombre` (`nombre`);
 
 --
--- Indexes for table `review`
+-- Indices de la tabla `review`
 --
 ALTER TABLE `review`
   ADD PRIMARY KEY (`id_review`);
 
 --
--- Indexes for table `review_sp`
+-- Indices de la tabla `review_sp`
 --
 ALTER TABLE `review_sp`
   ADD PRIMARY KEY (`fk_review`),
   ADD KEY `fk_sp` (`fk_sp`);
 
 --
--- Indexes for table `serie_pelicula`
+-- Indices de la tabla `serie_pelicula`
 --
 ALTER TABLE `serie_pelicula`
   ADD PRIMARY KEY (`id_sp`);
 
 --
--- Indexes for table `sp_genero`
+-- Indices de la tabla `sp_genero`
 --
 ALTER TABLE `sp_genero`
   ADD PRIMARY KEY (`fk_sp`,`fk_genero`),
   ADD KEY `fk_genero` (`fk_genero`);
 
 --
--- Indexes for table `usuario_registrado`
+-- Indices de la tabla `usuario_registrado`
 --
 ALTER TABLE `usuario_registrado`
   ADD PRIMARY KEY (`id_usuario`),
@@ -378,87 +371,87 @@ ALTER TABLE `usuario_registrado`
   ADD UNIQUE KEY `correo` (`correo`);
 
 --
--- Indexes for table `usuario_review`
+-- Indices de la tabla `usuario_review`
 --
 ALTER TABLE `usuario_review`
   ADD PRIMARY KEY (`fk_usuario`,`fk_review`),
   ADD KEY `fk_review` (`fk_review`);
 
 --
--- Indexes for table `usuario_sp`
+-- Indices de la tabla `usuario_sp`
 --
 ALTER TABLE `usuario_sp`
   ADD PRIMARY KEY (`fk_usuario`,`fk_sp`),
   ADD KEY `fk_sp` (`fk_sp`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `actor`
+-- AUTO_INCREMENT de la tabla `actor`
 --
 ALTER TABLE `actor`
   MODIFY `id_actor` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `genero`
+-- AUTO_INCREMENT de la tabla `genero`
 --
 ALTER TABLE `genero`
   MODIFY `id_genero` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `review`
+-- AUTO_INCREMENT de la tabla `review`
 --
 ALTER TABLE `review`
-  MODIFY `id_review` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_review` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `serie_pelicula`
+-- AUTO_INCREMENT de la tabla `serie_pelicula`
 --
 ALTER TABLE `serie_pelicula`
   MODIFY `id_sp` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `usuario_registrado`
+-- AUTO_INCREMENT de la tabla `usuario_registrado`
 --
 ALTER TABLE `usuario_registrado`
-  MODIFY `id_usuario` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_usuario` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- Constraints for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `actor_sp`
+-- Filtros para la tabla `actor_sp`
 --
 ALTER TABLE `actor_sp`
   ADD CONSTRAINT `actor_sp_ibfk_1` FOREIGN KEY (`fk_actor`) REFERENCES `actor` (`id_actor`),
   ADD CONSTRAINT `actor_sp_ibfk_2` FOREIGN KEY (`fk_sp`) REFERENCES `serie_pelicula` (`id_sp`);
 
 --
--- Constraints for table `review_sp`
+-- Filtros para la tabla `review_sp`
 --
 ALTER TABLE `review_sp`
   ADD CONSTRAINT `review_sp_ibfk_1` FOREIGN KEY (`fk_review`) REFERENCES `review` (`id_review`),
   ADD CONSTRAINT `review_sp_ibfk_2` FOREIGN KEY (`fk_sp`) REFERENCES `serie_pelicula` (`id_sp`);
 
 --
--- Constraints for table `sp_genero`
+-- Filtros para la tabla `sp_genero`
 --
 ALTER TABLE `sp_genero`
   ADD CONSTRAINT `sp_genero_ibfk_1` FOREIGN KEY (`fk_sp`) REFERENCES `serie_pelicula` (`id_sp`),
   ADD CONSTRAINT `sp_genero_ibfk_2` FOREIGN KEY (`fk_genero`) REFERENCES `genero` (`id_genero`);
 
 --
--- Constraints for table `usuario_review`
+-- Filtros para la tabla `usuario_review`
 --
 ALTER TABLE `usuario_review`
   ADD CONSTRAINT `usuario_review_ibfk_1` FOREIGN KEY (`fk_usuario`) REFERENCES `usuario_registrado` (`id_usuario`),
   ADD CONSTRAINT `usuario_review_ibfk_2` FOREIGN KEY (`fk_review`) REFERENCES `review` (`id_review`);
 
 --
--- Constraints for table `usuario_sp`
+-- Filtros para la tabla `usuario_sp`
 --
 ALTER TABLE `usuario_sp`
   ADD CONSTRAINT `usuario_sp_ibfk_1` FOREIGN KEY (`fk_usuario`) REFERENCES `usuario_registrado` (`id_usuario`),
