@@ -102,7 +102,7 @@ INSERT INTO `genero` (`id_genero`, `nombre`) VALUES
 CREATE TABLE `review` (
   `id_review` bigint(20) NOT NULL,
   `comentario` text DEFAULT NULL,
-  `rating` decimal(2,1) DEFAULT NULL CHECK (`rating` >= 0 and `rating` <= 10),
+  `rating` decimal(3,1) DEFAULT NULL CHECK (`rating` >= 0 and `rating` <= 10),
   `cantidad_likes` int(11) DEFAULT 0,
   `fecha` date NOT NULL,
   `spoiler` tinyint(1) DEFAULT 0

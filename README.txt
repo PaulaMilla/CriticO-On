@@ -24,3 +24,6 @@ Para ejecutarlo de manera local, ejecutar el docker-compose.yaml:
 
 La página estará en localhost:8011, para detener el docker-compose:
 > docker-compose down -v
+
+nota: el nginx.conf del deploy y del local son distintos, debido a que dentro de GKE se usa
+la ruta de clúster del backend.
