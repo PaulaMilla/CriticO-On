@@ -8,7 +8,7 @@ ENV MYSQL_USER=criticuser
 ENV MYSQL_PASSWORD=criticpass
 
 # Copia el archivo SQL al directorio especial de inicialización de MySQL
-COPY db-init.sql /docker-entrypoint-initdb.d/
+COPY init.sql /docker-entrypoint-init.d/
 
 # Exponer el puerto por si se desea acceder desde fuera del contenedor
 EXPOSE 3306
