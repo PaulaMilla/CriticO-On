@@ -29,8 +29,8 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Error interno del servidor', details: err.message || err });
 });
 
-app.listen(3000, ()=>{
-    console.log("Express server - puerto 3000 online");
+app.listen(3000, '0.0.0.0', () => {
+  console.log("Express server - puerto 3000 online en 0.0.0.0");
 });
 
 

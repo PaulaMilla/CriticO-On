@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: docker.io/paulaveloso/criticoon-back:latest
+        image: docker.io/paulaveloso/criticoon-back:1
         ports:
         - containerPort: 3000
         env:
@@ -47,5 +47,7 @@ spec:
   selector:
     app: backend
   ports:
-  - port: 3000
-    targetPort: 3000
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+  type: ClusterIP
