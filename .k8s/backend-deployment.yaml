@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: docker.io/paulaveloso/criticoon-back:1
+        image: docker.io/paulaveloso/criticoon-back:4
         ports:
         - containerPort: 3000
         env:
